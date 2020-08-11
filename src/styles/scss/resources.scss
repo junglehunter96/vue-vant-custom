@@ -1,0 +1,190 @@
+@import "./var.scss";
+
+// class 类名
+
+//单行文字超出不显示
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+// 外边距
+.pb-tb {
+  padding-bottom: 55px;
+}
+.bold {
+  font-weight: bold;
+}
+
+/* 滚动view 如果导航栏fixed 给根部容器手动添加margin*/
+.scroll-view {
+  position: relative;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* 有导航栏或者tabbar */
+.scroll-view1 {
+  position: relative;
+  height: calc(100vh - 55px);
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* 有导航栏有tabbar */
+.scroll-view2 {
+  position: relative;
+  height: calc(100vh - 100px);
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+@each $colorKey, $color in $colors {
+  .text-#{$colorKey} {
+    color: $color;
+  }
+  .bg-#{$colorKey} {
+    background-color: $color;
+  }
+}
+
+// text align
+@each $var in (left, center, right) {
+  .text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+@each $sizeKey, $size in $font-sizes {
+  .fs-#{$sizeKey} {
+    font-size: $size * $base-font-size;
+  }
+}
+.fs-great {
+  font-size: 27px;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+// text overflow
+.text-ellipsis {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// width, height
+.w-100 {
+  width: 100%;
+}
+.w-of {
+  width: 100vw;
+  overflow-x: hidden;
+}
+.h-100 {
+  height: 100%;
+}
+// flex
+.d-flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+@each $key, $value in $flex-jc {
+  .jc-#{$key} {
+    justify-content: $value;
+  }
+}
+
+@each $key, $value in $flex-ai {
+  .ai-#{$key} {
+    align-items: $value;
+  }
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+// m-0, mx-0
+@each $typeKey, $type in $spacing-types {
+  // .m-1
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}-#{$sizeKey} {
+      #{$type}: $size * $spacing-base-size;
+    }
+  }
+  // .mx-1 , .my-1
+  @each $sizeKey, $size in $spacing-sizes {
+    .#{$typeKey}x-#{$sizeKey} {
+      #{$type}-left: $size * $spacing-base-size;
+      #{$type}-right: $size * $spacing-base-size;
+    }
+    .#{$typeKey}y-#{$sizeKey} {
+      #{$type}-top: $size * $spacing-base-size;
+      #{$type}-bottom: $size * $spacing-base-size;
+    }
+  }
+  // .mt-1
+  @each $directionKey, $direction in $spacing-directions {
+    @each $sizeKey, $size in $spacing-sizes {
+      .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+        #{$type}-#{$direction}: $size * $spacing-base-size;
+      }
+    }
+  }
+}
+// borders
+.border {
+  border: 0.5px solid $lineColor;
+}
+.border-radius {
+  border-radius: 5px;
+}
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir} {
+    border-#{$dir}: 1px solid $border-color;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.normal-button {
+  margin: 20px auto;
+  width: 295px;
+  font-size: 18px;
+  border-radius: 20px;
+  height: 40px;
+  line-height: 40px;
+
+  @extend .text-center;
+  @extend .text-white;
+  @extend .bg-login;
+  @extend .fs-md;
+}
+
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+.pf {
+  position: fixed;
+}
