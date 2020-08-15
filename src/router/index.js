@@ -13,7 +13,7 @@ const originalPush = VueRouter.prototype.push;
 
 // 处理路由跳转会报错的问题
 VueRouter.prototype.push = function push(...rest) {
-  return originalPush.apply(this, rest).catch(err => err);
+  return originalPush.apply(this, rest).catch((err) => err);
 };
 
 Vue.use(VueRouter);
@@ -22,7 +22,7 @@ const files = require.context("./modules", false, /\.js$/);
 
 const routes = [];
 // 获取所有的路由内容
-files.keys().forEach(key => {
+files.keys().forEach((key) => {
   const file = files(key).default;
   // 根据导出的内容判断是否数组，如果数组需使用扩展运算符
   if (Array.isArray(file)) {
@@ -39,8 +39,20 @@ routes.push(
       name: "Home",
       component: Home,
       meta: {
-        title: "首页"
-      }
+        title: "首页",
+      },
+      redirect: "/home",
+      children: [
+        {
+          path: "home",
+          component: () => import("@/views/home/demoEntry"),
+          meta: {
+            title: "首页",
+            hiddenNav: true,
+            name: "home",
+          },
+        },
+      ],
     },
     // 无权限页面
     {
@@ -48,8 +60,8 @@ routes.push(
       name: "NoPermission",
       component: () => import("@/views/error-page/no-permission"),
       meta: {
-        title: "访问无权限"
-      }
+        title: "访问无权限",
+      },
     },
     // 404 页面路由
     {
@@ -57,9 +69,9 @@ routes.push(
       name: "NotFound",
       component: () => import("@/views/error-page/404"),
       meta: {
-        title: "页面走丢了"
-      }
-    }
+        title: "页面走丢了",
+      },
+    },
   ]
 );
 
@@ -69,9 +81,9 @@ const router = new VueRouter({
   scrollBehavior(/* to, from, savedPosition */) {
     return {
       x: 0,
-      y: 0
+      y: 0,
     };
-  }
+  },
 });
 
 router.beforeEach((to, from, next) => {

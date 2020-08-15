@@ -12,15 +12,15 @@
 export default {
   data() {
     return {
-      transitionName: "van-slide-right"
+      transitionName: "van-fade"
     };
   },
   created() {
     this.$navigation.on("forward", () => {
-      this.transitionName = "van-slide-right";
+      this.transitionName = "van-fade";
     });
     this.$navigation.on("back", () => {
-      this.transitionName = "van-slide-left";
+      this.transitionName = "van-fade";
     });
   }
 };
