@@ -2,11 +2,12 @@
 # 使用说明
 
 这个项目的起源是因为团队有许多移动端项目，但是不同人搭建项目的时候配置的都不一样，导致维护成本很高，所以我就整理了这个项目，将许多基础配置进行了封装，比如常用的移动端适配，路由缓存，gzip压缩，移动端适配等等，开发人员只需要fork/clone下来即可直接使用，无需再做配置。欢迎大家使用，有问题或者需求请提交`Issues`,本框架将持续更新。
+该项目主要针对移动端业务；在基础脚手架上集成了 compositionApi，因此去除了部分装饰器函数。
 
 # 功能点
 
 ### 移动端适配
-本框架默认使用`px`转`vw`来进行移动端适配，已配置完成。如果需要将`px`转换为`rem`,请参考`docs`目录下面的文档说明
+本框架默认使用`px`转`vw`来进行移动端适配，已配置完成。如果需要将`px`转换为`rem`,可以在postcss.config.js中切换viewportUnit为 `rem`。
 
 ### 路由缓存
 在开发移动端项目的时候，我们经常会有这样的需求，比如一个列表页跳转到详情页，这时候我们希望列表页可以`keep-alive`,但是如果详情页返回到列表页，详情页不需要`keep-alive`，本框架已集成了路由缓存，不需要再做任何配置。
@@ -86,10 +87,6 @@ git config --global core.autocrlf input
 
 或者也可以打开.editorconfig 文件，注释掉  `end_of_line = lf`, 注释方式为在代码前面加 #
 
-#### 2. 使用装饰器可能会提示 `Property assignment expected.Vetur(1136)`
-因为本项目使用`eslint`进行代码格式检查，所以可以关闭`vetur`验证`script`的能力，请在`vscode settings`里面添加下面代码
-```shell
-"vetur.validation.script": false,
 ```
 
 
