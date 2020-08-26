@@ -1,9 +1,9 @@
 <template>
   <div>
     <van-nav-bar
-      v-if="$route.meta.hiddenNav !== true"
+      v-if="!$route.meta.hiddenNav"
       :title="$route.meta.title"
-      left-arrow
+      :left-arrow="!$route.meta.hiddenBack"
     />
     <router-view />
     <van-tabbar
@@ -20,19 +20,23 @@
 
 <script>
 import { Tabbar, TabbarItem, NavBar } from "vant";
+import { ref, onActivated, getCurrentInstance } from "@vue/composition-api";
+
 export default {
-  data() {
-    return {
-      active: "home",
-    };
-  },
   components: {
     [Tabbar.name]: Tabbar,
     [TabbarItem.name]: TabbarItem,
     [NavBar.name]: NavBar,
   },
-  activated() {
-    this.active = this.$route.meta.name;
+  setup() {
+    let active = ref("home");
+    let vm = getCurrentInstance();
+    onActivated(() => {
+      active.value = vm.$route.meta.name;
+    });
+    return {
+      active,
+    };
   },
 };
 </script>

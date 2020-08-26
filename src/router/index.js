@@ -49,6 +49,7 @@ routes.push(
           meta: {
             title: "首页",
             hiddenNav: true,
+            hiddenBack: true,
             name: "home",
           },
         },

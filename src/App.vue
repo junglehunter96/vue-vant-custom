@@ -1,4 +1,3 @@
-
 <template>
   <div id="app">
     <transition :name="transitionName">
@@ -9,20 +8,22 @@
   </div>
 </template>
 <script>
+import { ref, getCurrentInstance } from "@vue/composition-api";
 export default {
-  data() {
+  setup() {
+    let transitionName = ref("van-fade");
+    let vm = getCurrentInstance();
+    vm.$navigation.on("forward", () => {
+      transitionName = "van-fade";
+    });
+    vm.$navigation.on("back", () => {
+      transitionName = "van-fade";
+    });
+
     return {
-      transitionName: "van-fade"
+      transitionName,
     };
   },
-  created() {
-    this.$navigation.on("forward", () => {
-      this.transitionName = "van-fade";
-    });
-    this.$navigation.on("back", () => {
-      this.transitionName = "van-fade";
-    });
-  }
 };
 </script>
 
