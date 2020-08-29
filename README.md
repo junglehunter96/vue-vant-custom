@@ -87,7 +87,6 @@ git config --global core.autocrlf input
 
 或者也可以打开.editorconfig 文件，注释掉  `end_of_line = lf`, 注释方式为在代码前面加 #
 
-```
 
 
 
