@@ -1,10 +1,5 @@
 <template>
   <div>
-    <van-nav-bar
-      v-if="!$route.meta.hiddenNav"
-      :title="$route.meta.title"
-      :left-arrow="!$route.meta.hiddenBack"
-    />
     <router-view />
     <van-tabbar
       v-model="active"

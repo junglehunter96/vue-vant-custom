@@ -43,37 +43,6 @@ module.exports = {
       .set("@styles", resolve("src/styles"))
       .set("@utils", resolve("src/utils"))
       .set("@request", resolve("src/request"));
-
-    const oneOfsMap = config.module.rule("scss").oneOfs.store;
-    oneOfsMap.forEach((item) => {
-      item
-        .use("sass-resources-loader")
-        .loader("sass-resources-loader")
-        .options({
-          // Provide path to the file with resources
-          resources: "./src/styles/scss/resources.scss",
-        })
-        .end();
-    });
-  },
-  css: {
-    // 是否将css 提取到独立的文件,生产环境提取，开发环境不提取
-    extract: !!isProd,
-    // 开发模式开启css sourcemap
-    sourceMap: !isProd,
-    loaderOptions: {
-      less: {
-        // 若使用 less-loader@5，请移除 lessOptions 这一级，直接配置选项。
-        lessOptions: {
-          modifyVars: {
-            // 直接覆盖变量
-            "text-color": "#333",
-            "border-color": "#eee",
-            "active-color": "#f2f3f5",
-          },
-        },
-      },
-    },
   },
   devServer: {
     port: 12315,

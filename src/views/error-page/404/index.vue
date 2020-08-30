@@ -1,8 +1,9 @@
 <template>
   <div>
     <van-empty image="error" description="页面走丢了" />
-    <div class="d-flex jc-center">
-      <van-button type="primary" to="/">返回首页</van-button>
+    <div class="flex justify-center pt-1 text-base">
+      返回首页
+      <!-- <van-button type="primary" to="/">返回首页</van-button> -->
     </div>
   </div>
 </template>

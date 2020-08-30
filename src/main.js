@@ -19,6 +19,8 @@ import CompositionApi from "@vue/composition-api";
 import BaseComponent from "./base";
 import CustomComponent from "./components";
 
+import "@/styles/tailwind.css";
+
 Vue.use(BaseComponent, {});
 Vue.use(CustomComponent, {});
 
